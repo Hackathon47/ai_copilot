@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>AI Copilot - Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="loader-wrapper">
+        <div class="video-background"><video autoplay muted playsinline id="loader-video"><source src="loader.mp4" type="video/mp4"></video></div>
+        <div class="loader-content">
+            <h1 class="anim-text line-1">Initializing AI Copilot</h1>
+            <h2 class="anim-text line-2">Ensuring Your Safety...</h2>
+        </div>
+    </div>
+    
+    <div class="main-container hidden">
+        <div class="video-container">
+            <h2 class="container-title">DRIVER FEED</h2>
+            <canvas id="output_canvas" width="960" height="720"></canvas>
+            <video class="input_video" id="webcam" style="display: none;"></video>
+        </div>
+
+        <div class="dashboard-panel">
+            <h2 class="container-title">SYSTEM METRICS</h2>
+            
+            <div class="metric-card main-status"><p id="status-text">PRESS START</p></div>
+            <div class="metric-card attention-score"><p><span id="score-value">--</span>%</p></div>
+            <div class="metric-card focus-streak"><h4>FOCUS STREAK</h4><p id="streak-value">0s</p></div>
+            <div class="metric-card"><h4>BLINKS</h4><p id="blink-count">--</p></div>
+            <div class="metric-card"><h4>YAWNS</h4><p id="yawn-count">--</p></div>
+            <div class="metric-card"><h4>HEAD POSE</h4><p id="head-pose-status">--</p></div>
+
+            <div class="start-section">
+                <button id="start-btn">START TRIP</button>
+                <button id="stop-btn" class="hidden">STOP TRIP</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="report-card-modal" class="hidden">
+        <div class="report-card">
+            <h2>Trip Summary</h2>
+            <div class="report-grid">
+                <div><h4>Duration</h4><p id="report-duration">--</p></div>
+                <div><h4>Avg. Focus</h4><p id="report-avg-focus">--</p></div>
+                <div><h4>Max Streak</h4><p id="report-max-streak">--</p></div>
+                <div><h4>Drowsy Alerts</h4><p id="report-drowsy">--</p></div>
+                <div><h4>Distraction Alerts</h4><p id="report-distractions">--</p></div>
+                <div><h4>Phone Use Alerts</h4><p id="report-phone">--</p></div>
+            </div>
+            <button id="close-report-btn">NEW TRIP</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+    <script src="script.js" defer></script>
+</body>
+</html>
